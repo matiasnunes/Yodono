@@ -1,0 +1,43 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<div>
+	<p class="h1 text-center text-danger"><strong>ENCONTRAR UN DONANTE</strong></p><br>
+	<p class="text-center">Ultilice los filtros para encontrar donantes disponibles en su departamento y con grupo de sangre compatible.</p>
+	<br><br>
+</div>
+<!-- Fin del titulo-->
+<ul>
+<div class="container">
+	<div class="formDiv formbackground rounded-lg">
+		<form method="get">
+			{{ filtro.form }}
+			<button class="btn btn-primary" type"=submit">Buscar</button>
+		</form>
+	</div>
+</div>
+<br><br><br>
+<div class="container">
+			<div class="row">
+				{% for donante in filtro.qs %}
+					<div class="col-sm">
+						<div class="solicitudes formbackground rounded-lg">
+						<img src="{% static 'imagenes/persona.png' %}" class="rounded mx-auto d-block" width="40" height="25">
+						<br>
+						<p class="titulo text-center"><strong>{{ donante.nombres |add:" " |add:donante.apellidos }}</strong></p>
+						<p class="text-center text-muted textop">
+							DISPONIBLE
+						</p><br>
+						<p class="text-center"><strong>Localidad:</strong></p>
+						<p class="text-center">{{ donante.departamento }}</p><br>
+						<p class="text-center"><strong>Tipo de sangre:</strong></p>
+						<p class="text-center">{{ donante.grupoSanguineo }}</p>
+						</div>
+						<br>
+						<a class="btn btn-danger border border-danger center-block botonesingreso" href=""><span style="color:white">Contactar</span></a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		
+{% endblock content %}

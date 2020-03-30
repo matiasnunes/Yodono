@@ -1,0 +1,14 @@
+{% extends "inicio/base.html" %}
+{% block content %}
+<div>
+    <p class="h1 text-center text-danger"><strong>Solicitar donación</strong></p>
+</div>
+<br><br>
+<div class="formDiv formbackground rounded-lg">
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">Enviar</button>
+    </form>
+</div>
+{% endblock content %}

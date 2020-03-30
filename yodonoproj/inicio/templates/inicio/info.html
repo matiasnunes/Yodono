@@ -1,0 +1,36 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+	<p class="h1 text-center text-danger"><strong>INFORMACIÓN</strong></p>
+	<br><br>
+	<div class="formbackground mr-5 ml-5">
+	<div class="card-columns">
+  <div class="card">
+    <img src="{% static 'imagenes/condiciones.png' %}" class="card-img-top" width="190" height="700">
+    </div>
+
+	<div class="card p-3">
+    <img src="{% static 'imagenes/nodonar.png' %}" class="card-img-top" alt="...">
+	</div>
+    <div class="card">
+    <img src="{% static 'imagenes/usos.png' %}" class="card-img-top" width">
+    </div>
+  <div class="card text-center">
+    <div class="card-body">
+      <h1 class="card-title"><strong>Preguntas frecuentes</strong></h1>
+      <img src="imagenes/preguntas.png" class="card-img-top" alt="...">
+    </div>
+  </div>
+  <div class="card text-center">
+	<div class="card-body">
+	<h1 class="card-title"><strong>Procedimiento</strong></h1>
+    <img src="{% static 'imagenes/procedimiento.png' %}" class="card-img-top" alt="...">
+	</div>
+  </div>
+    <div class="card">
+    <img src="{% static 'imagenes/concurrir.png' %}" class="card-img-top" height="250">
+	</div>
+</div>
+	</div>
+{% endblock content %}

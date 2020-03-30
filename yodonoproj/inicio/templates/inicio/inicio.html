@@ -1,0 +1,85 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Fin del navbar-->
+{% if messages %}
+	{% for message in messages %}
+		<div class="alert alert-{{ message.tags }}">
+			{{message}}
+		</div>
+	{% endfor %}
+{% endif %}
+<div>
+		<br>
+		<img src="{% static 'imagenes/YoDonoInicio.png' %}" class="rounded mx-auto d-block" width="400" height="150">
+		<br><br><br>
+	</div>
+	<div class="bordes">
+	<div class="container">
+		<div class="row">
+			<div class="col">
+				<div class="registroinicio formbackground rounded-lg">
+					<h2 class=" titulo text-center"><strong>Quiero formar parte</strong></h2>
+					<a class="btn btn-outline-danger border border-danger center-block botonesinicio" href="{% url 'registro-donantes' %}"><span style="color:black">Registrarme</span></a>
+					<br><p class="text-center">Si ya estás registrado:</p>
+					<a class="btn btn-outline-success border border-success center-block botonesingreso" href="{% url 'ingresar' %}"><span style="color:black">Ingresar</span></a>
+				</div>
+			</div>
+			<div class="col-1">
+			</div>
+	  </div>
+	</div>
+	<br><br>
+	</div>
+	<div class="bordes">
+		<br>
+		<h2 class=" titulo text-center"><strong>¿Qué es YoDono?</strong></h2>
+		<p class="text-center">YoDono es una plataforma que <strong>facilita la gestión de pedidos de donación</strong> de sangre.</p><br>
+		<p class="text-center">Mediante un funcionamiento sencillo pretende <strong>conectar</strong> y comunicar a <strong>quienes necesiten una <br>
+		donación</strong> (para sí mismos o para un allegado) con <strong>donantes disponibles y compatibles</strong> para hacerlo.</p>
+		<br><br>
+	</div>
+	<div class="bordes">
+		<br><br>
+		<h2 class=" titulo text-center"><strong>SOLICITUDES ABIERTAS</strong></h2>
+		<br>
+		<div class="container">
+			<div class="row">
+			{% for solicitud in solicitudes|slice:":3" %}
+				<div class="col-sm">
+					<div class="solicitudes formbackground rounded-lg">
+					<img src="{% static 'imagenes/gota.png' %}" class="rounded mx-auto d-block" width="20" height="25">
+					<br>
+					<p class="titulo text-center"><strong>{{ solicitud.fechaLimite }}</strong></p>
+					<p class="text-center text-muted textop">
+						FECHA LIMITE
+					</p>
+					<p class="text-center"><strong>Localidad:</strong></p>
+					<p class="text-center">{{ solicitud.departamento }}</p>
+					<p class="text-center"><strong>Tipo de sangre:</strong></p>
+					<p class="text-center">{{ solicitud.grupoSanguineo }}</p>
+					<p class="text-center"><strong>Donantes requeridos:</strong></p>
+					<p class="text-center">{{ solicitud.cantidadDonantes }}</p>
+					</div>
+					<br>
+					<a class="btn btn-danger border border-danger center-block botonesingreso" href="{% url 'detalle-solicitud' solicitud.id %}"><span style="color:white">Ver Detalles</span></a>
+				</div>
+			{% endfor %}
+			</div>
+		</div>
+		<br><br>
+		<a class="btn btn-danger border border-danger center-block vertodas" href="{% url 'solicitudes' %}"><span style="color:white">Ver todas las solicitudes</span></a>
+		<br><br>
+	</div>
+	<div>
+		<br>
+		<h2 class=" titulo text-center"><strong>ENCONTRAR CENTRO DE DONACIÓN</strong></h2><br>
+		<div class="center-block">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d13090.649123974681!2d-56.168312530692!3d-34.88982590291876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1scentros%20de%20donacion!5e0!3m2!1ses!2suy!4v1583714020962!5m2!1ses!2suy" width="600" height="450" frameborder="0" style="border:0;" class="border border-danger center-block"></iframe>
+		</div>
+		<br>
+		<br>
+		<a class="btn btn-outline-secondary border border-secondary center-block linklista" href="{% url 'centros-donacion' %}"><span style="color:black">VER LISTA DE CENTROS DE DONACIÓN</span></a>
+		<br><br><br>
+	</div>
+{% endblock content %}

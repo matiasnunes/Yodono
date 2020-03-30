@@ -1,0 +1,73 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Fin del navbar-->
+		{% for message in messages %}
+			<div class="alet alert-{{ message.tags }}">
+				{{ message }}
+			</div>
+		{% endfor %}
+
+	<p class="h1 text-center text-danger"><strong>Solicitud #{{ object.pk }}</strong></p>
+	{% for p in object.participantes.all %}
+		{% if user.id == p.id %}
+			<div class="text-center center-block mensaje">
+				Usted ya está participando de solicitud.
+			</div>
+		{% endif %}
+	{% endfor %}
+	<div class="formbackground rounded-lg w-75 p-3 center-block">
+		<img src="{% static 'imagenes/gota.png' %}" class="rounded mx-auto d-block" width="40" height="50">
+		<p class="h1 text-center text-danger"><strong>{{ object.fechaLimite }}</strong></p>
+		<p class="text-center"><strong>FECHA LÍMITE</strong></p>
+		<br><br>
+		<p class="text-center text-danger"><strong>NOMBRE DEL SOLICITANTE</strong></p>
+		<h1 class="display-4 text-center">{{ object.nombres |add:' ' |add:object.apellidos }}</h1>
+		<br>
+		<div class="container-fluid rounded-lg shadow p-3 mb-5 bg-white">
+			<div class="row">
+				<div class="col">
+				<p class="text-center text-danger"><strong>DEPARTAMENTO</strong></p>
+				<p class="text-center"> {{ object.departamento }} </p>
+				</div>
+				<div class="col">
+				<p class="text-center text-danger"><strong>GRUPO SANGUÍNEO</strong></p>
+				<p class="text-center"> {{ object.grupoSanguineo }} </p>
+				</div>
+				<div class="col">
+				<p class="text-center text-danger"><strong>DONANTES REQUERIDOS</strong></p>
+				<p class="text-center">{{ object.participantes.count}} donantes de {{ object.cantidadDonantes }} necesarios</p>
+				</div>
+			</div>
+		</div>
+		<p class="text-center text-danger"><strong>MOTIVO</strong></p>
+		<p class="h3 text-center">{{ object.motivo }}</p>
+		<br><br>
+		<p class="text-center text-danger"><strong>HOSPITAL</strong></p>
+		{% if object.hospital %}
+		<p class="h3 text-center">{{ object.hospital }}</p>
+		{% else %}
+		<p class="h4 text-center">No especificado</p>
+		{% endif %}
+	</div>
+<br><br>
+<div class="container">
+
+	{% if object.cantidadDonantes  <  object.participantes.count %}
+	<div class="row">
+		<div class="col-sm">
+			<a class="btn btn-danger border border-danger center-block botonesperfil" href="{% url 'participar' object.id %}"><span style="color:white">QUIERO PARTICIPAR DONANDO</span></a>
+		</div>
+		<div class="col-sm">
+			<a class="btn btn-dark border border-dark center-block botonesperfil" href="{% url 'solicitudes' %}"><span style="color:white"> Volver a lista de solicitudes </span></a>
+		</div>
+	</div>
+	{% else %}
+		<div class="text-center center-block mensaje">Solicitud cerrada</div>
+	<div class="row">
+			<a class="btn btn-dark border border-dark center-block botonesperfil" href="{% url 'solicitudes' %}"><span style="color:white"> Volver a lista de solicitudes </span></a>
+	</div>
+	{% endif %}
+</div>
+<br><br>
+{% endblock content %}

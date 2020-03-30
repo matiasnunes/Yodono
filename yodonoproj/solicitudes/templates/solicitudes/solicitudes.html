@@ -1,0 +1,34 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<br><br>
+		<h2 class=" titulo text-center"><strong>SOLICITUDES ABIERTAS</strong></h2>
+		<br>
+		<a class="btn btn-danger btn-lg border border-danger center-block botonesperfil" width="300" href="{% url 'crear-solicitud' %}"><span style="color:white"><strong>SOLICITAR UNA DONACIÓN</strong></span></a>
+		<br><br>
+		<div class="container">
+			<div class="row">
+				{% for solicitud in solicitudes %}
+					<div class="col-sm">
+						<div class="solicitudes formbackground rounded-lg">
+						<img src="{% static 'imagenes/gota.png' %}" class="rounded mx-auto d-block" width="20" height="25">
+						<br>
+						<p class="titulo text-center"><strong>{{ solicitud.fechaLimite }}</strong></p>
+						<p class="text-center text-muted textop">
+							FECHA LIMITE
+						</p>
+						<p class="text-center"><strong>Localidad:</strong></p>
+						<p class="text-center">{{ solicitud.departamento }}</p>
+						<p class="text-center"><strong>Tipo de sangre:</strong></p>
+						<p class="text-center">{{ solicitud.grupoSanguineo }}</p>
+						<p class="text-center"><strong>Donantes requeridos:</strong></p>
+						<p class="text-center">{{ solicitud.cantidadDonantes }}</p>
+						</div>
+						<br>
+						<a class="btn btn-danger border border-danger center-block botonesingreso" href="{% url 'detalle-solicitud' solicitud.id %}"><span style="color:white">Ver Detalles</span></a>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+		<br><br>
+	{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends "inicio/base.html" %}
+{% block content %}
+<div class="content text-center">
+	<h2>Usted ha salido de su cuenta.</h2>
+	<div class="border-top pt-3">
+		<small class="text-muted">
+			<a href="{% url 'ingresar' %}">Ingresar nuevamente.</a>
+		</small>
+	</div>
+</div>
+<br><br>
+{% endblock content %}

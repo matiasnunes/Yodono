@@ -1,0 +1,23 @@
+{% extends "inicio/base.html" %}
+{% block content %}
+<div class="content-section">
+	<p class="h1 text-center text-danger"><strong>Ingresar al sistema</strong></p>
+	<div class="formDiv formbackground rounded-lg">
+		<form method="POST">
+			{% csrf_token %}
+			<fieldset class="form-group">
+				{{ form.as_p }}
+			</fieldset>
+			<div class="form-group">
+				<button class="btn btn-primary" type="submit">Ingresar</button>
+			</div>
+		</form>
+	</div>
+	<div class="text-center border-top pt-3">
+		<small class="text-muted">
+			¿No tiene cuenta? <a class="ml-2" href="{% url 'registro-donantes'">Registrarme ahora.</a>
+		</small>
+	</div>
+</div>
+<br><br>
+{% endblock content %}

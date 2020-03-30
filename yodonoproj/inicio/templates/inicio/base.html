@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>YoDono</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+	<a class="navbar-brand" href="{% url 'inicio' %}"> <!-- Link inicio en imagen de logo-->
+    <img src="{% static 'imagenes/YoDono.jpeg' %}" width="130" height="35" class="d-inline-block align-top" alt="">
+	</a>
+	<div class="collapse navbar-collapse align-middle" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+		<li class="nav-item active">
+			<a class="nav-link"  href="{% url 'inicio' %}">Inicio <span class="sr-only">(current)</span></a> <!-- Link de inicio -->
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'solicitudes' %}">Ver Solicitudes</a> <!-- Link de Ver Solicitudes -->
+        </li>
+		<li class="nav-item">
+			<a class="nav-link" href="{% url 'buscar-donantes' %}">Buscar donantes</a> <!-- Link de Ver Solicitudes -->
+		</li>
+        <li class="nav-item">
+			<a class="nav-link" href="{% url 'informacion' %}">Info</a> <!-- Link de Info -->
+        </li>
+    </ul>
+	<ul class="nav navbar-nav navbar-right">
+		{% if user.is_authenticated %}
+			<li><a href="{% url 'perfil' %}"><span class="glyphicon glyphicon-user"></span>Mi perfil</a></li> <!-- Link de registro. -->
+		    <li><a href="{% url 'salir' %}"><span class="glyphicon glyphicon-log-in"></span>Salir</a></li> <!-- Link de inicio de sesión -->
+		{% else %}
+        	<li><a href="{% url 'registro-donantes' %}"><span class="glyphicon glyphicon-user"></span>Registrarme</a></li> <!-- Link de registro. -->
+        	<li><a href="{% url 'ingresar' %}"><span class="glyphicon glyphicon-log-in"></span>Iniciar sesión</a></li> <!-- Link de inicio de sesión -->
+		{% endif %}
+    </ul>
+	</div>
+</nav>
+<!-- Fin del navbar-->
+{% block content %}
+{% endblock %}
+</body>
+</html>

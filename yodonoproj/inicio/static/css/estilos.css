@@ -1,0 +1,61 @@
+		body { background: #EAEAEA}
+		.formbackground { 
+						background: 	#FFFFFF;
+						border: solid #FFFFFF;
+						border-top-width: 30px;
+						border-bottom-width: 20px;
+						border-left-width: 50px;
+						border-right-width: 50px;
+  		}
+		.formDiv {width: 700px;
+					margin-left: auto;
+					margin-right: auto;
+		}
+		.registro {width: 400px;
+					margin-left: auto;
+					margin-right: auto;
+		}
+		.botones {width: 300 px;
+		}
+		.titulo {color: #E50000;
+		}
+		.registroinicio {width: 450px;
+					margin-left: auto;
+					margin-right: auto;
+		}
+		.botonesinicio {width: 200px;
+		}
+		.botonesingreso {width: 100px;
+		}
+		.bordes{border-bottom-style:dashed;
+		}
+		.linklista{width: 300px;
+		}
+		.solicitudes {width: 300px;
+					margin-left: auto;
+					margin-right: auto;
+		}
+		.vertodas{width: 1075px;
+		}
+		.textop {font-size: 10px;
+				margin-top-width: 0px;
+		}
+		.perfil {width: 400px;
+					margin-left: auto;
+					margin-right: auto;
+		}
+		.estado {width: 300px;
+		}
+		.botonesperfil {width: 400px;
+		}
+		.mensaje {
+		    background-color: mediumseagreen;
+		    border: 4px;
+		    width: 75%;
+		    padding: 10px 0;
+		    font-size: 1.4em;
+		    color: white;
+		    margin-top: 20px;
+		    margin-bottom: 20px;
+		    border-radius: 5px;
+		}

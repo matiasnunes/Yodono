@@ -1,0 +1,52 @@
+{% extends "inicio/base.html" %}
+{% load static %}
+{% block content %}
+<!-- Fin del navbar-->
+<div>
+	<p class="h1 text-center text-danger"><strong>MI PERFIL</strong></p>
+	<p class="h4 text-center">DONANTE</p>
+	<p class="h4 text-center">{{ user.username }}</p>
+</div>
+<!-- Fin del titulo-->
+<br><br><br>
+<div class="container formbackground">
+			<div class="row">
+				<div class="col-sm">
+					<div class="perfil formbackground rounded-lg">
+						<p class="titulo text-center"><strong>NOMBRE Y APELLIDO</strong></p>
+						<p class="text-center">{{ user.donante.nombres |add:" " |add:user.donante.apellidos }}</p><br>
+						<p class="titulo text-center"><strong>DEPARTAMENTO</strong></p>
+						<p class="text-center">{{ user.donante.departamento }}</p><br>
+						<p class="titulo text-center"><strong>CORREO ELECTRÓNICO</strong></p>
+						<p class="text-center">{{ user.donante.emailContacto }}</p><br>
+						<p class="titulo text-center"><strong>ESTADO</strong></p>
+						<p class="text-center btn-lg btn-success rounded-lg estado">Disponible para donar</p><br>
+				</div>
+				</div>
+				<div class="col-sm">
+					<div class="perfil formbackground rounded-lg">
+						<p class="titulo text-center"><strong>GRUPO SANGUÍNEO</strong></p>
+						<p class="text-center">{{ user.donante.grupoSanguineo }}</p><br>
+						<p class="titulo text-center"><strong>ÚLTIMA FECHA DE DONACIÓN</strong></p>
+						<p class="text-center">13/02/2019	</p><br>	
+						<p class="titulo text-center"><strong>TELÉFONO</strong></p>
+						<p class="text-center">{{ user.donante.numeroContacto }}</p><br>
+						<p class="titulo text-center"><strong>MÉTODO PREFERIDO DE CONTACTO</strong></p>
+						<p class="text-center">Teléfono</p><br>
+					</div>
+			</div>
+		</div>
+</div>
+<br><br>
+<div class="container">
+			<div class="row">
+				<div class="col-sm">
+					<a class="btn btn-dark border border-dark center-block botonesperfil" href=""><span style="color:white"> Volver a lista de solicitudes </span></a>
+				</div>
+				<div class="col-sm">
+					<a class="btn btn-dark border border-dark center-block botonesperfil" href=""><span style="color:white">Editar mi perfil</span></a>
+			</div>
+		</div>
+</div>
+<br><br>
+{% endblock content %}
