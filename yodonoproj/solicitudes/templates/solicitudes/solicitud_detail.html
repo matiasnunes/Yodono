@@ -11,6 +11,8 @@
 	<p class="h1 text-center text-danger"><strong>Solicitud #{{ object.pk }}</strong></p>
 	{% for p in object.participantes.all %}
 		{% if user.id == p.id %}
+			{% with participando=True %}
+			{% endwith %}
 			<div class="text-center center-block mensaje">
 				Usted ya está participando de solicitud.
 			</div>
@@ -53,13 +55,15 @@
 <br><br>
 <div class="container">
 
-	{% if object.cantidadDonantes  <  object.participantes.count %}
+	{% if object.cantidadDonantes  >  object.participantes.count %}
 	<div class="row">
 		<div class="col-sm">
-			<a class="btn btn-danger border border-danger center-block botonesperfil" href="{% url 'participar' object.id %}"><span style="color:white">QUIERO PARTICIPAR DONANDO</span></a>
+			<a class="btn btn-dark border border-dark center-block botonesperfil" href="{% url 'solicitudes' %}"><span style="color:white"> Volver a lista de solicitudes </span></a>
 		</div>
 		<div class="col-sm">
-			<a class="btn btn-dark border border-dark center-block botonesperfil" href="{% url 'solicitudes' %}"><span style="color:white"> Volver a lista de solicitudes </span></a>
+			{% if participando == False %}
+			<a class="btn btn-danger border border-danger center-block botonesperfil" href="{% url 'participar' object.id %}"><span style="color:white">QUIERO PARTICIPAR DONANDO</span></a>
+            {% endif %}
 		</div>
 	</div>
 	{% else %}
@@ -70,4 +74,6 @@
 	{% endif %}
 </div>
 <br><br>
+Cantidad de donantes: {{ object.cantidadDonantes  }}
+Cantidad de participantes: {{  object.participantes.count }}
 {% endblock content %}
