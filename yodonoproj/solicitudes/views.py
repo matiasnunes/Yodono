@@ -14,13 +14,16 @@ def ver_solicitudes(request):
 
 def participar(request, pk):
     solicitud = get_object_or_404(Solicitud, pk=pk)
-    if (solicitud.participantes.count() < solicitud.cantidadDonantes ):
-        print('menor')
-        solicitud.participantes.add(request.user)
-        solicitud.save()
-        messages.success(request, f'Usted ha sido añadido como participante a esta solicitud. Gracias!')
-    else:
-        print('mayor')
+    if (solicitud.cantidadDonantes > solicitud.participantes.count()):
+        if (solicitud.solicitante != request.user.donante):
+            if (solicitud.participantes.count() < solicitud.cantidadDonantes ):
+                print('menor')
+                solicitud.participantes.add(request.user)
+                solicitud.save()
+            else:
+                print('mayor')
+        else:
+            messages.warning(request, f'No es posible participar en su propia solicitud.')
     return redirect('detalle-solicitud', pk)
 
 
@@ -41,5 +44,5 @@ class CrearSolicitudView(LoginRequiredMixin, CreateView):
               'fechaLimite','motivo','cantidadDonantes','departamento']
 
     def form_valid(self, form):
-        form.instance.donante = self.request.user
+        form.instance.solicitante = self.request.user.donante
         return super().form_valid(form)

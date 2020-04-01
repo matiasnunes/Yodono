@@ -61,7 +61,7 @@
 			<a class="btn btn-dark border border-dark center-block botonesperfil" href="{% url 'solicitudes' %}"><span style="color:white"> Volver a lista de solicitudes </span></a>
 		</div>
 		<div class="col-sm">
-			{% if participando == False %}
+			{% if not participando %}
 			<a class="btn btn-danger border border-danger center-block botonesperfil" href="{% url 'participar' object.id %}"><span style="color:white">QUIERO PARTICIPAR DONANDO</span></a>
             {% endif %}
 		</div>
